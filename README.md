@@ -55,3 +55,4 @@ The analysis results indicate that increased social media usage may be associate
 7. Conclusion
 
 This study examined the relationship between social media usage habits and mental health from a data science perspective. The findings suggest that social media usage patterns may be related to psychological well-being. Future work may include the use of larger datasets and the application of machine learning models to achieve more comprehensive and predictive analyses.
+
