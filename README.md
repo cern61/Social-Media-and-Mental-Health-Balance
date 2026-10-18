@@ -8,6 +8,9 @@
 ![Plotly](https://img.shields.io/badge/Plotly-visualization-3F4F75?logo=plotly&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-notebook-F37626?logo=jupyter&logoColor=white)
 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1OgtbWg2ZVSx7D72k5oan38TOlAJ9xUq2)
+
 > *Final project for **Introduction to Data Science** — supervised by Muhammet Sinan Başarslan.*
 
 ---
