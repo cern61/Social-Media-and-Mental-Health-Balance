@@ -1,58 +1,128 @@
-📊 Mental Health and Social Media Balance
+# 📱🧠 Social Media & Mental Health Balance
 
-A Data Science Study on the Relationship Between Social Media Usage and Mental Well-being
+### A data science study of how digital habits relate to stress, sleep quality, and happiness
 
-Google Colab Link: https://colab.research.google.com/drive/1OgtbWg2ZVSx7D72k5oan38TOlAJ9xUq2?usp=sharing#scrollTo=7E3SF-I89Cbq
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-data%20analysis-150458?logo=pandas&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?logo=scikitlearn&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-visualization-3F4F75?logo=plotly&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-notebook-F37626?logo=jupyter&logoColor=white)
 
-1. Abstract
+> *Final project for **Introduction to Data Science** — supervised by Muhammet Sinan Başarslan.*
 
-This study investigates the relationship between social media usage habits and mental health indicators using data science techniques. An open-source dataset was analyzed through data preprocessing, exploratory data analysis, and visualization methods. The findings suggest that the duration and intensity of social media usage may be associated with variations in certain mental health indicators. The results highlight the importance of maintaining balanced social media usage for psychological well-being.
+---
 
-2. Introduction
+## 📖 Overview
 
-In recent years, the widespread use of social media platforms has raised concerns about their potential impact on mental health. Understanding how social media usage patterns relate to psychological well-being has become an important research topic. The primary objective of this project is to analyze the relationship between social media usage and mental health indicators using data analysis techniques. This study aims to provide data-driven insights into how social media habits may influence stress levels, emotional well-being, and overall mental health.
+Social media is part of everyday life, but what does heavy use actually do to our well-being? This project explores that question end to end: from raw survey-style data to exploratory analysis, a literature-informed risk score, and an interactive machine-learning tool that estimates an individual's mental-health risk level.
 
-3. Dataset Description
+The analysis covers **500 users** and combines demographic information, social media usage, and self-reported well-being metrics. The dataset has **no missing values**, so the focus stays on analysis rather than imputation.
 
-The Mental Health and Social Media Balance Dataset was used in this project. The dataset contains information related to individuals’:
+## 🎯 Objectives
 
-Daily social media usage duration
+- Understand how **screen time, sleep, stress, exercise, and happiness** relate to each other
+- Compare **gender groups** and **social media platforms** in terms of stress and happiness
+- Build a transparent, **literature-grounded risk score** from normalized well-being indicators
+- Train a **Random Forest classifier** and wrap it in an interactive per-user analysis tool
 
-Frequency of social media platform usage
+## 🗂️ Dataset
 
-Self-reported mental health and well-being indicators
+Kaggle dataset: *Mental Health and Social Media Balance* (500 records).
 
-The dataset was obtained from Kaggle and is suitable for academic and educational purposes.
+| Column | Description |
+|---|---|
+| `User_ID` | Unique user identifier (U001–U500) |
+| `Age` | Age of the user |
+| `Gender` | Male / Female / Other |
+| `Social_Media_Platform` | Main platform used |
+| `Daily_Screen_Time(hrs)` | Average daily screen time |
+| `Sleep_Quality(1-10)` | Self-reported sleep quality |
+| `Stress_Level(1-10)` | Self-reported stress level |
+| `Days_Without_Social_Media` | Days spent offline from social media |
+| `Exercise_Frequency(week)` | Weekly exercise sessions |
+| `Happiness_Index(1-10)` | Self-reported happiness |
 
-4. Methodology
+## 🔬 Methodology
 
-The project was conducted following the steps outlined below:
+**1. Data preparation** – Loading, structure inspection, and missing-value check.
 
-Data Loading: The dataset was imported into the Python environment.
+**2. Exploratory analysis** – Density (KDE) plots for all seven numeric variables, plus a correlation heatmap.
 
-Data Preprocessing: Missing values were examined and appropriate data cleaning procedures were applied.
+**3. Segment analysis** – Platform preferences by gender, gender distribution, stress and happiness by gender (box plots), and average stress and happiness by platform.
 
-Exploratory Data Analysis (EDA): Statistical summaries and visualizations were used to explore patterns within the data.
+**4. Risk scoring** – Using Min-Max normalization, a composite **Depression Risk Score** is computed from four indicators, inspired by research from Twenge et al. (2019) and Primack et al. (2017):
 
-Data Visualization: Relationships between social media usage variables and mental health indicators were visualized using charts and graphs.
+```
+Risk = ( Stress + Screen Time + (1 − Sleep Quality) + (1 − Happiness) ) / 4
+```
 
-5. Technologies Used
+Users are then grouped into **Low** (≤ 0.4), **Medium** (0.4–0.7), and **High** (> 0.7) risk levels.
 
-The following technologies and tools were utilized in this project:
+**5. Machine learning** – A `RandomForestClassifier` (100 trees) predicts the risk level, exposed through an **interactive `ipywidgets` interface**: enter a User ID, view the profile, and get a predicted risk level with a tailored recommendation.
 
-Programming Language: Python
+## 💡 Key Findings
 
-Libraries: Pandas, NumPy, Matplotlib, Seaborn
+- 😴 **Screen time and sleep quality** show the strongest negative relationship, consistent with late-night screen exposure disrupting sleep.
+- 😰 **Stress and happiness** are strongly and negatively related.
+- 📈 **Higher screen time** is associated with **higher stress** and **lower happiness**.
+- 🏃 **Exercise** shows a modest but positive effect, lowering stress and raising happiness.
+- 📲 **Platforms differ:** visually driven, notification-heavy platforms tend to be linked with higher stress, while X and LinkedIn-style networks are linked with lower stress and higher happiness.
+- ⚖️ Most users fall into the **Medium** risk group, suggesting that digital life is a matter of *balance* rather than a simple good-or-bad.
 
-Development Environment: Jupyter Notebook, Google Colab
+## 🚀 Getting Started
 
-Version Control: Git and GitHub
+```bash
+# 1. Clone the repository
+git clone https://github.com/cern61/Social-Media-and-Mental-Health-Balance.git
+cd Social-Media-and-Mental-Health-Balance
 
-6. Results and Discussion
+# 2. Install dependencies
+pip install pandas numpy seaborn matplotlib plotly scikit-learn ipywidgets jupyter
 
-The analysis results indicate that increased social media usage may be associated with negative changes in certain mental health indicators. However, it is important to note that these findings do not imply a direct causal relationship. Individual differences and external factors may influence the observed outcomes. The results emphasize the importance of balanced and mindful social media usage.
+# 3. Place the dataset next to the notebook
+#    MentalHealthSocialMediaBalance.csv
 
-7. Conclusion
+# 4. Launch the notebook
+jupyter notebook SocialMediaMentalHealthBalance.ipynb
+```
 
-This study examined the relationship between social media usage habits and mental health from a data science perspective. The findings suggest that social media usage patterns may be related to psychological well-being. Future work may include the use of larger datasets and the application of machine learning models to achieve more comprehensive and predictive analyses.
+> The interactive User ID tool requires a Jupyter environment with `ipywidgets` enabled (it also works in Google Colab).
 
+## 📁 Repository Structure
+
+```
+├── SocialMediaMentalHealthBalance.ipynb   # Full analysis & interactive tool
+├── MentalHealthSocialMediaBalance.csv     # Dataset (add from Kaggle)
+└── README.md
+```
+
+## ⚠️ Limitations & Future Work
+
+We believe in being transparent about what this project is and isn't:
+
+- **Not a clinical tool.** The risk score is a heuristic built from self-reported data and is meant for educational exploration, not diagnosis.
+- **Correlation ≠ causation.** The findings describe associations; they do not prove that social media causes changes in well-being.
+- **Label and model overlap.** The risk level is derived from the same features the Random Forest uses, so the model largely learns the scoring formula. Its predictions should be read as a demonstration of the pipeline, not as independent predictive validation.
+- **Small sample.** With 500 records, results may not generalize to wider populations.
+
+**Next steps:** train/test split with cross-validation, validation against an independent clinical-style outcome, feature importance analysis, and a lightweight web dashboard (e.g., Streamlit) for the interactive tool.
+
+## 👥 Team
+
+| Name |
+|---|
+| Ceren Naz Dervişoğlu |
+| Betül Tok |
+| Zeynep Aslı Çakmak |
+| Gülseli Ocakcı |
+
+## 📚 References
+
+1. Twenge, J. M., et al. (2019). *Trends in U.S. Adolescents' Mental Health and Its Relation to Digital Media Use.* Journal of Abnormal Psychology.
+2. Primack, B. A., et al. (2017). *Social Media Use and Perceived Social Isolation Among Young Adults in the U.S.* American Journal of Preventive Medicine.
+3. U.S. Department of Health and Human Services (2023). *Social Media and Youth Mental Health: The U.S. Surgeon General's Advisory.*
+4. Kaggle: *Mental Health and Social Media Balance* dataset.
+
+---
+
+<p align="center">⭐ If you found this project interesting, feel free to star the repo!</p>
