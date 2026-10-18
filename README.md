@@ -73,6 +73,8 @@ Users are then grouped into **Low** (≤ 0.4), **Medium** (0.4–0.7), and **Hig
 - ⚖️ Most users fall into the **Medium** risk group, suggesting that digital life is a matter of *balance* rather than a simple good-or-bad.
 
 ## 🚀 Getting Started
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1OgtbWg2ZVSx7D72k5oan38TOlAJ9xUq2)
+
 
 ```bash
 # 1. Clone the repository
